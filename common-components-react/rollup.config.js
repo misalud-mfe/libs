@@ -2,7 +2,7 @@
   import commonjs from "@rollup/plugin-commonjs";
   import babel from "@rollup/plugin-babel";
   import peerDepsExternal from "rollup-plugin-peer-deps-external";
-
+import postcss from 'rollup-plugin-postcss';
   export default {
     input: "src/index.js",
     output: [
@@ -20,6 +20,11 @@
       }),
       peerDepsExternal(),
       commonjs(),
+      postcss({
+        plugins: [],
+        minimize: true,
+        sourceMap: true,
+      }),
       babel({
         babelHelpers: "bundled",
         extensions: [".js", ".jsx"],
